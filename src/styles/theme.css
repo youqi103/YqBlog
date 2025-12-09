@@ -1,0 +1,110 @@
+/* 你的原始代码（完全保留） */
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --nav-bg-imge: linear-gradient(120deg,
+      rgba(137, 247, 254, 0.8) 0%,
+      rgba(102, 166, 255, 0.9) 100%
+  );
+  --aboutme-bg-color:linear-gradient(
+    120deg,
+    rgba(137, 247, 254, 0.7) 0%,
+   rgba(102, 166, 255, 0.7) 100%
+  );
+
+  --font-size-1: 0.75rem;    /* 12px：最小辅助文字 */
+  --font-size-2: 0.875rem;   /* 14px：次要提示文字 */
+  --font-size-3: 1rem;       /* 16px：默认正文 */
+  --font-size-4: 1.125rem;   /* 18px：强调正文 */
+  --font-size-5: 1.25rem;    /* 20px：小标题 */
+  --font-size-6: 1.5rem;     /* 24px：中标题 */
+  --font-size-7: 1.75rem;    /* 28px：大标题 */
+  --font-size-8: 2rem;       /* 32px：页面主标题 */
+
+  --primary-gradient: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+  --primary-color: #66a6ff;    /* 主色纯色（按钮/链接） */
+  --primary-light: #99c1ff;    /* 主色浅调（hover态） */
+
+  /* 中性色（背景/文字） */
+  --bg-main: rgba(255, 255, 255, 0.8);  /* 页面兜底背景（适配背景图） */
+
+  --bg-card: #ffffff;                     /* 卡片背景 */
+  --card-bg-color:rgba(255,255,255,0.6);
+  --text-primary: #333333;                /* 主要文字 */
+  --text-secondary: #666666;              /* 次要文字 */
+  --text-tertiary: #999999;               /* 弱化文字 */
+
+  --sidebar-color:rgba(255, 255, 255, 0.5)
+}
+
+/* 你的原始代码（完全保留） */
+:root[data-theme="dark"] {
+  --nav-bg-imge:rgba(0,0,0,0.5);
+  --aboutme-bg-color: linear-gradient(
+    120deg,
+    rgba(35, 24, 56, 0.4) 0%,    /* 深紫（偏黑） */
+    rgba(15, 23, 50, 0.5) 70%,   /* 墨蓝紫过渡（撞色核心） */
+    rgba(22, 30, 62, 0.4) 100%    /* 墨蓝收尾（贴合黑底） */
+  );
+  --shadow: 0 2px 8px rgba(0,0,0,0.3);
+  --card-bg-color:rgba(30,41,59,0.5);
+  --bg-main: rgba(15, 23, 50, 0.5);
+
+  --bg-card: #1e293b;                  /* 卡片深色背景 */
+  --text-primary: #f8fafc;             /* 主要文字 */
+  --text-secondary: #cbd5e1;           /* 次要文字 */
+  --text-tertiary: #94a3b8;            /* 弱化文字 */
+  --border-color: #334155;             /* 深色边框 */
+  --sidebar-color:rgba(0,0,0, 0.5)
+}
+
+/* 你的原始代码（完全保留）+ 新增变量使用 */
+body {
+  min-height: 100vh;
+  background-image: url('@/statics/images/1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+  /* ========== 新增：使用变量优化全局样式 ========== */
+  font-size: var(--font-size-3);  /* 正文默认用3级字体 */
+  color: var(--text-primary);     /* 全局文字色适配日夜间 */
+  background-color: var(--bg-main); /* 背景图加载失败时的兜底色 */
+}
+body[data-theme="dark"] {
+  background-image: url('@/statics/images/4.jpg');
+}
+.nav {
+  background: var(--nav-bg-imge);
+  box-shadow: var(--shadow);
+  padding: var(--font-size-4);
+}
+
+
+
+/* 标题层级示例 */
+.title-level-1 { font-size: var(--font-size-7); color: var(--text-primary); }
+.title-level-2 { font-size: var(--font-size-6); color: var(--text-primary); }
+.title-level-3 { font-size: var(--font-size-5); color: var(--text-primary); }
+.title-level-4 { font-size: var(--font-size-4); color: var(--text-primary); }
+.content-normal { font-size: var(--font-size-2); color: var(--text-secondary); }
+.content-small { font-size: var(--font-size-1); color: var(--text-tertiary); }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

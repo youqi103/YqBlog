@@ -2,61 +2,30 @@
   <div class="container">
     <div class="homepage-section">
       <h2 class="section-title title-level-2">最新文章</h2>
-      <p class="section-subtitle title-level-3">2025-03-15</p>
       <div class="card-grid">
-        <CardComponent
-          link="https://www.baidu.com"
-          title="云原生的下半场：AI Native 平台工程时代已经到来"
-          target="_blank"
-        >
+        <CardComponent v-for="value in articles.latestArticles.slice(0, 3)" :key="value.id" :link="'/blog/' + value.id"
+          :title="value.title">
           <template #content>
-            回顾云原生十年演进，展望 AI Native 平台工程的技术分层与关键变革，解析 KubeCon NA 2025
-            行业信号。
-          </template>
-        </CardComponent>
-        <CardComponent
-          link="https://www.baidu.com"
-          title="从 YAML 到 Markdown：规范驱动开发的演化与 AI 原生范式的崛起"
-          target="_blank"
-        >
-          <template #content>
-            探讨 YAML 作为配置文件的局限性，以及如何通过 Markdown 实现更灵活、更易维护的配置。
+            <p>{{ value.description }}</p>
           </template>
         </CardComponent>
       </div>
+      <div class="view-more-container">
+        <a href="/blog" class="view-more-button">查看更多</a>
+      </div>
     </div>
     <div class="homepage-section">
-      <h2 class="section-title title-level-2">最新文章</h2>
-      <p class="section-subtitle title-level-3">2025-03-15</p>
+      <h2 class="section-title title-level-2">热门文章</h2>
       <div class="card-grid">
-        <CardComponent
-          link="https://www.baidu.com"
-          title="探索 AI 资源库更新，收录超 500 个项目，新增评分系统与展示优化，助您高效筛选优质 AI 项目。"
-          target="_blank"
-        >
+        <CardComponent v-for="value in articles.hotArticles.slice(0, 3)" :key="value.id" :link="'/blog/' + value.id"
+          :title="value.title">
           <template #content>
-            探索 AI 资源库更新，收录超 500 个项目，新增评分系统与展示优化，助您高效筛选优质 AI
-            项目。
+            <p>{{ value.description }}</p>
           </template>
         </CardComponent>
-        <CardComponent
-          link="https://www.baidu.com"
-          title="以大模型为中心重塑应用架构，通过推理、RAG 与智能体协作构建 AI 原生的软件工程体系。"
-          target="_blank"
-        >
-          <template #content>
-            探讨如何利用大模型驱动应用架构，实现推理、RAG 与智能体协作，构建 AI 原生的软件工程体系。
-          </template>
-        </CardComponent>
-         <CardComponent
-          link="https://www.baidu.com"
-          title="以大模型为中心重塑应用架构，通过推理、RAG 与智能体协作构建 AI 原生的软件工程体系。"
-          target="_blank"
-        >
-          <template #content>
-            探讨如何利用大模型驱动应用架构，实现推理、RAG 与智能体协作，构建 AI 原生的软件工程体系。
-          </template>
-        </CardComponent>
+      </div>
+      <div class="view-more-container">
+        <a href="/blog" class="view-more-button">查看更多</a>
       </div>
     </div>
   </div>
@@ -64,6 +33,7 @@
 
 <script lang="ts" setup>
 import CardComponent from '@/components/CardComponent.vue'
+import articles from '@/data/articles';
 </script>
 
 <style scoped>
@@ -75,11 +45,11 @@ import CardComponent from '@/components/CardComponent.vue'
 .homepage-section {
   width: 100%;
   max-width: 80vw;
-  margin:20px auto;
+  margin: 20px auto;
   padding: 20px;
   border-radius: 10px;
   background-color: var(--bg-main);
-  box-shadow: 18px -3px 9px 0px rgba(0,0,0,0.1);
+  box-shadow: 18px -3px 9px 0px rgba(0, 0, 0, 0.1);
 }
 
 /* 基础标题样式，使用em单位 */
@@ -91,5 +61,24 @@ import CardComponent from '@/components/CardComponent.vue'
 .section-subtitle {
   margin-bottom: 24px;
   text-align: center;
+}
+
+.view-more-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.view-more-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--primary-light);
+  color: white;
+  font-size: var(--font-size-medium);
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.view-more-button:hover {
+  background-color: var(--primary-color);
 }
 </style>

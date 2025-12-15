@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { useThemeStore } from '@/stores/theme';
+import { useThemeStore } from '@/stores/themeStore/theme'
 import '@/styles/theme.css'
 import App from './App.vue'
 import router from './router'

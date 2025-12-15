@@ -1,15 +1,12 @@
 <template>
   <div class="card">
    <h3 class="card-title">
-
-    <a
-    :href="link"
+    <router-link
+    :to="link"
     class="title-level-4"
-    :target="target || '_blank'"
-    :rel="target === '_blank' ? 'noopener noreferrer' : ''"
     >
      {{ title }}
-    </a>
+    </router-link>
    </h3>
    <p class="card-content content-normal">
     <slot name="content"></slot>

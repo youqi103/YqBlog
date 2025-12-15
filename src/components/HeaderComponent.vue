@@ -7,8 +7,8 @@
         <li class="hideOnMobile"><a href="/about">关于我</a></li>
         <li class="hideOnMobile"><a href="/blog">文章列表</a></li>
         <li @click="toggleTheme" class="theme-button">
-            <img v-if="theme === 'light' " src="@/statics/images/moon.svg" alt="浅色模式">
-            <img v-else src="@/statics/images/sun.svg" alt="深色模式">
+          <img v-if="theme === 'light'" src="@/statics/images/moon.svg" alt="浅色模式">
+          <img v-else src="@/statics/images/sun.svg" alt="深色模式">
         </li>
         <li class="menu-button" @click="showSidebar">
           <a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px"
@@ -35,7 +35,7 @@
 
 <script lang='ts' setup>
 import { ref } from 'vue'
-import { useThemeStore } from '@/stores/theme';
+import { useThemeStore } from '@/stores/themeStore/theme';
 import { storeToRefs } from 'pinia';
 
 const themeStore = useThemeStore();
@@ -54,13 +54,21 @@ const hideSidebar = (): void => {
 </script>
 
 <style scoped>
+.Header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
 .theme-button {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 30px;
 }
+
 nav {
+
   box-shadow: var(--shadow);
   background-image: var(--nav-bg-imge);
   backdrop-filter: blur(10px);
@@ -85,10 +93,24 @@ nav a {
   display: flex;
   align-items: center;
   color: var(--text-primary);
+  position: relative;
+  z-index: 1;
 }
 
-nav li:not(:first-child) a:hover,.theme-button:hover{
+nav li:not(:first-child) a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
   background-color: #66a6ff;
+  transition: height 0.3s ease;
+  z-index: -1;
+}
+
+nav li:not(:first-child) a:hover::after {
+  height: 100%;
 }
 
 nav li:first-child {

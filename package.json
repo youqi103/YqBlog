@@ -8,15 +8,17 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "run-p type-check \"build-only {@}\" -- --base=/YqBlog",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix --cache",
-    "format": "prettier --write --experimental-cli src/"
+    "format": "prettier --write --experimental-cli src/",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "ant-design-vue": "^4.2.6",
+    "gh-pages": "^6.3.0",
     "pinia": "^3.0.4",
     "vue": "^3.5.25",
     "vue-router": "^4.6.3"

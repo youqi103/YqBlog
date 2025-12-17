@@ -6,7 +6,7 @@
           <img src="@/statics/images/avatar.jpg" alt="头像" />
         </div>
         <div class="name">忧戚</div>
-        <div class="description">一个前端开发人员</div>
+        <div class="description">一个普通大学生,希望能找到工作</div>
 
         <div class="skills">
           <h4>技术栈</h4>

@@ -11,7 +11,7 @@
         </CardComponent>
       </div>
       <div class="view-more-container">
-        <a href="/blog" class="view-more-button">查看更多</a>
+        <router-link to="/blog" class="view-more-button">查看更多</router-link>
       </div>
     </div>
     <div class="homepage-section">
@@ -25,7 +25,7 @@
         </CardComponent>
       </div>
       <div class="view-more-container">
-        <a href="/blog" class="view-more-button">查看更多</a>
+        <router-link to="/blog" class="view-more-button">查看更多</router-link>
       </div>
     </div>
   </div>

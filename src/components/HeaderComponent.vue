@@ -3,9 +3,9 @@
     <nav>
       <ul>
         <li><a href="#" class="logo">忧戚的博客</a></li>
-        <li class="hideOnMobile"><a href="/">首页</a></li>
-        <li class="hideOnMobile"><a href="/about">关于我</a></li>
-        <li class="hideOnMobile"><a href="/blog">文章列表</a></li>
+        <li class="hideOnMobile"><router-link to="/">首页</router-link></li>
+        <li class="hideOnMobile"><router-link to="/about">关于我</router-link></li>
+        <li class="hideOnMobile"><router-link to="/blog">文章列表</router-link></li>
         <li @click="toggleTheme" class="theme-button">
           <img v-if="theme === 'light'" src="@/statics/images/moon.svg" alt="浅色模式">
           <img v-else src="@/statics/images/sun.svg" alt="深色模式">
@@ -25,9 +25,9 @@
                 d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
             </svg></a>
         </li>
-        <li><a href="/">首页</a></li>
-        <li><a href="/about">关于我</a></li>
-        <li><a href="/blog">文章列表</a></li>
+        <li><router-link to="/">首页</router-link></li>
+        <li><router-link to="/about">关于我</router-link></li>
+        <li><router-link to="/blog">文章列表</router-link></li>
       </ul>
     </nav>
   </div>

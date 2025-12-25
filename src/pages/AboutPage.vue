@@ -86,10 +86,10 @@
       <div class="myarticle">
         <h3 class="myarticle-title title-level-1">我的文章</h3>
         <div class="card-grid">
-          <CardComponent v-for="value in articles.myArticles" :key="value.id" :link="'/blog/' + value.id"
-            :title="value.title">
+          <CardComponent v-for="post in posts" :key="post.slug" :link="'/blog/' + post.slug"
+            :title="post.title">
             <template #content>
-              {{ value.description }}
+              {{ post.description }}
             </template>
           </CardComponent>
         </div>
@@ -173,9 +173,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { posts } from '@/data/index.ts';
 import { ref, onMounted } from 'vue';
 import CardComponent from '@/components/CardComponent.vue';
-import articles from '@/data/articles';
 import { useMessageStore } from '@/stores/messageStore/messageStore';
 
 // 实例化 Pinia Store

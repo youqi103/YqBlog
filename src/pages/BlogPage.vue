@@ -3,10 +3,10 @@
     <div class="blog_card">
       <h2 class="section-title title-level-2">最新文章</h2>
       <div class="card-grid">
-        <CardComponent v-for="value in Article.latestArticles" :key="value.id" :link="'/blog/' + value.id"
-          :title="value.title">
+        <CardComponent v-for="post in posts" :key="post.slug" :link="`/blog/${post.slug}`"
+          :title="post.title">
           <template #content>
-            <p>{{ value.description }}</p>
+            <p>{{ post.description }}</p>
           </template>
         </CardComponent>
       </div>
@@ -14,10 +14,10 @@
     <div class="blog_card">
       <h2 class="section-title title-level-2">热门文章</h2>
       <div class="card-grid">
-        <CardComponent v-for="value in Article.hotArticles" :key="value.id" :link="'/blog/' + value.id"
-          :title="value.title">
+        <CardComponent v-for="post in posts" :key="post.slug" :link="`/blog/${post.slug}`"
+          :title="post.title">
           <template #content>
-            <p>{{ value.description }}</p>
+            <p>{{ post.description }}</p>
           </template>
         </CardComponent>
       </div>
@@ -28,7 +28,7 @@
 
 <script lang='ts' setup>
 import CardComponent from '@/components/CardComponent.vue';
-import Article from '@/data/articles';
+import {posts} from '@/data/index.ts';
 
 </script>
 

@@ -1,7 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 console.log('BASE_URL:', import.meta.env.BASE_URL)
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
@@ -12,7 +12,7 @@ const router = createRouter({
       component: () => import('@/pages/AboutPage.vue'),
     },
     { path: '/blog', component: () => import('@/pages/BlogPage.vue') },
-    { path: '/blog/:id', component: () => import('@/pages/BlogDetailPage.vue') },
+    { path: '/blog/:slug', component: () => import('@/pages/BlogDetailPage.vue') },
   ],
 })
 

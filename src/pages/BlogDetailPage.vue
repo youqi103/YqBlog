@@ -1,41 +1,34 @@
 <template>
-  <div class="blog-detail-container" v-if="article">
+  <div class="blog-detail-container" v-if="post">
     <div class="article-header">
-      <h1 class="article-title">{{ article.title }}</h1>
+      <h1 class="article-title">{{ post.title }}</h1>
       <div class="article-meta">
-        <span class="publish-date">{{ formatDate(article.date) }}</span>
+        <span class="publish-date">{{ formatDate(post.date) }}</span>
       </div>
     </div>
 
     <div class="article-content">
-      <p class="article-description">{{ article.description }}</p>
-      <div class="article-body" v-html="article.content"></div>
+      <p class="article-description">{{ post.description }}</p>
+      <div class="article-body" v-html="md.render(post.content)"></div>
     </div>
 
-    <MessageComponent :article-id="articleId"></MessageComponent>
+    <MessageComponent :post-id="post.slug"></MessageComponent>
 
 </div>
 </template>
 
 <script setup lang="ts">
+  import md from '@/utils/markdown.ts'
 import MessageComponent from '@/components/MessageComponent.vue';
-import { ref, onMounted } from 'vue';
+import {  onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import articles from '@/data/articles';
-import type { Article } from '@/data/articles';
+import { posts } from '@/data/index.ts';
 
 
 const route = useRoute();
-const articleId = Number(route.params.id);
-const article = ref<Article | null>(null);
+const post = posts.find(p => p.slug === route.params.slug);
 onMounted(() => {
-  // 查找当前文章
-  const allArticles = [...articles.latestArticles, ...articles.hotArticles, ...articles.myArticles];
-  //console.log(allArticles);
 
-  // 修复：将局部变量赋值改为直接更新响应式变量
-  article.value = allArticles.find(item => item.id === articleId) || null;
-  //console.log(article.value);
 
 
 });
@@ -71,13 +64,14 @@ const formatDate = (dateString: string): string => {
 }
 
 .article-description {
-  font-size: 1.2rem;
+  font-size: var(--text-secondary);
   color: var(--text-secondary);
   margin-bottom: 2rem;
   line-height: 1.6;
 }
 
 .article-body {
+  font-size: var(--font-size-3);
   line-height: 1.8;
   margin-bottom: 3rem;
 }
@@ -99,7 +93,7 @@ const formatDate = (dateString: string): string => {
 }
 
 .comment-date {
-  font-size: 0.8rem;
+  font-size: var(--font-size-2);
   color: var(--text-secondary);
   margin-bottom: 0.5rem;
 }
@@ -132,7 +126,7 @@ const formatDate = (dateString: string): string => {
   }
 
   .article-title {
-    font-size: 1.5rem;
+    font-size: var(--font-size-4);
   }
 }
 </style>
